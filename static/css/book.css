@@ -40,6 +40,9 @@
   padding: 15px;
   margin: 0px 15px;
 }
+.clicked {
+  background-color: #c4c4c4;
+}
 .bk-location {
   padding: 15px 5px;
 }
@@ -56,13 +59,111 @@
 }
 .bk-movie-box {
   margin-top: 30px;
+  margin-bottom: 50px;
+}
+.bk-movie-title {
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+.bk-movie-n {
+  font-size: 1.5em;
+  font-family: "Do Hyeon", sans-serif;
+  color: #c4c4c4;
+  margin-bottom: 20px;
+}
+.bk-time-box {
+  display: flex;
+}
+.bk-time-option {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 5px 15px;
+  margin: 0px 10px;
+  text-align: center;
+}
+.time-clicked {
+  color: white;
+  font-weight: bold;
+  background-color: black;
 }
 .bk-right-container {
   min-width: 400px;
   border: 1px solid #c4c4c4;
   border-radius: 8px;
-  padding: 10px;
+  padding: 30px;
 }
-.clicked {
+#bk-right-img {
+  text-align: center;
+  margin-bottom: 10px;
+}
+#bk-right-img > img {
+  min-width: 350px;
+  height: 400px;
+}
+#bk-right-title {
+  font-weight: bolder;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+#bk-right-desc {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.bk-right-btn {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #be123c;
+  border: transparent;
+  border-radius: 6px;
+  padding: 10px 150px;
+  cursor: pointer;
+}
+
+/* book_seat.html */
+
+table {
+  margin: 30px auto;
+  border-spacing: 10px;
+  border-collapse: separate;
+}
+td {
   background-color: #c4c4c4;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+.bk-text {
+  width: 100%;
+  background-color: #be123c;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0px;
+}
+.bk-info-box {
+  display: flex;
+  padding: 30px 50px;
+}
+.bk-info-small {
+  width: calc(100vw / 4);
+}
+.bk-info-title {
+  font-size: 18px;
+}
+.bk-info-desc {
+  font-size: 2em;
+  font-weight: bolder;
+}
+.bk-info-small > a > button {
+  float: right;
+  height: 100%;
+  padding: 30px;
+  border: transparent;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
 }

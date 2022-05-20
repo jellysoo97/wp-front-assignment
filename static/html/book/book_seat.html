@@ -1,10 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>최애시네마</title>
+    <link href="../../../main.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/book.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
   </head>
-  <body></body>
+  <body onload="pageload()">
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="../../../main.html">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="bk-container">
+        <div class="bk-title"><h3>좌석 선택하기</h3></div>
+        <div class="bk-title">
+          *티켓가격은 전 좌석, 전 연령대 8,000원으로 동일합니다.
+        </div>
+        <div class="bk-seat-container">
+          <table id="bk-table"></table>
+        </div>
+        <div class="bk-text">예매 정보 확인</div>
+        <div class="bk-info-box">
+          <div class="bk-info-small">
+            <div class="bk-info-title">결제금액</div>
+            <div class="bk-info-desc">24,000원</div>
+          </div>
+          <div class="bk-info-small">
+            <div class="bk-info-title">선택좌석</div>
+            <div class="bk-info-desc">C8</div>
+          </div>
+          <div class="bk-info-small">
+            <a href="../../../main.html">
+              <button type="button">취소하기</button>
+            </a>
+          </div>
+          <div class="bk-info-small">
+            <a href="book_check.html">
+              <button type="button">티켓 구매하기</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      var table = document.getElementById("bk-table")
+
+      function pageload() {
+        for (var i = 0; i < 7; i++) {
+          table.innerHTML += "<tr id='bk-table-row" + String(i) + "'></tr>"
+          for (var j = 0; j < 11; j++) {
+            var row = document.getElementById("bk-table-row" + String(i))
+            var alphabet = String.fromCharCode(65 + i)
+            row.innerHTML += "<td>" + alphabet + String(j + 1) + "</td>"
+          }
+        }
+      }
+    </script>
+  </body>
 </html>
