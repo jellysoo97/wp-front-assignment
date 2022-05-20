@@ -339,6 +339,9 @@
           clicked_state[id_num] = true
           window.localStorage.setItem("날짜", value)
           selectOption()
+          movie_title.innerText = ""
+          movie_n.innerText = ""
+          time_box.innerHTML = ""
         } else {
           clicked_state[id_num] = false
           window.localStorage.removeItem("날짜")

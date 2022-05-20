@@ -40,6 +40,23 @@
   padding: 15px;
   margin: 0px 15px;
 }
+.bk-location {
+  padding: 15px 5px;
+}
+.bk-time-container {
+  margin-top: 30px;
+}
+.bk-movie-select {
+  text-align: right;
+}
+#bk-select-option {
+  width: 300px;
+  padding: 10px;
+  font-weight: bold;
+}
+.bk-movie-box {
+  margin-top: 30px;
+}
 .bk-right-container {
   min-width: 400px;
   border: 1px solid #c4c4c4;
