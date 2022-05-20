@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="kor">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최애시네마</title>
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
+    <link href="../../../main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="../../../main.html">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="mi-s2-container">
+        <div class="mi-s2-title">현재 상영작</div>
+        <div class="mi-s2-box">
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/main/doctor.jpg"
+                class="mi-img"
+                id="mi-img"
+                onclick="saveTitle('닥터스트레인지 : 대혼돈의 멀티버스');"
+              />
+            </a>
+            <div class="mi-s2-card-title">
+              닥터 스트레인지 : 대혼돈의 멀티버스
+            </div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/main/crime.jpg"
+                class="mi-img"
+                onclick="saveTitle('범죄도시2');"
+              />
+            </a>
+            <div class="mi-s2-card-title">범죄도시2</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/main/bad.jpg"
+                class="mi-img"
+                onclick="saveTitle('배드가이즈');"
+              />
+            </a>
+            <div class="mi-s2-card-title">배드가이즈</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/main/fantastic.jpg"
+                class="mi-img"
+                onclick="saveTitle('신비한 동물들과 덤블도어의 비밀');"
+              />
+            </a>
+            <div class="mi-s2-card-title">신비한 동물들과 덤블도어의 비밀</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="mi-s2-container">
+        <div class="mi-s2-title">이번달 필모 정주행 선정 배우</div>
+        <div class="mv-actor" id="bene">베네딕트 컴버배치</div>
+        <div class="mi-s2-box">
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/bene_star.jpg"
+                class="mi-img"
+                onclick="saveTitle('스타트렉 다크니스');"
+              />
+            </a>
+            <div class="mi-s2-card-title">스타트렉 다크니스</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/bene_immi.jpg"
+                class="mi-img"
+                onclick="saveTitle('이미테이션 게임');"
+              />
+            </a>
+            <div class="mi-s2-card-title">이미테이션 게임</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/bene_doctor.jpg"
+                class="mi-img"
+                onclick="saveTitle('닥터 스트레인지');"
+              />
+            </a>
+            <div class="mi-s2-card-title">닥터 스트레인지</div>
+          </div>
+        </div>
+        <div class="mv-actor" id="lee">이병헌</div>
+        <div class="mi-s2-box">
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/lee_jsa.jpg"
+                class="mi-img"
+                onclick="saveTitle('공동경비구역 JSA');"
+              />
+            </a>
+            <div class="mi-s2-card-title">공동경비구역 JSA</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/lee_wang.jpg"
+                class="mi-img"
+                onclick="saveTitle('광해, 왕이 된 남자');"
+              />
+            </a>
+            <div class="mi-s2-card-title">광해, 왕이 된 남자</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/lee_inside.jpg"
+                class="mi-img"
+                onclick="saveTitle('내부자들');"
+              />
+            </a>
+            <div class="mi-s2-card-title">내부자들</div>
+          </div>
+        </div>
+        <div class="mv-actor" id="rachel">레이첼 맥아담스</div>
+        <div class="mi-s2-box">
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/bene_star.jpg"
+                class="mi-img"
+                onclick="saveTitle('퀸카로 살아남는 법');"
+              />
+            </a>
+            <div class="mi-s2-card-title">퀸카로 살아남는 법</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/rachel_note.jpg"
+                class="mi-img"
+                onclick="saveTitle('노트북');"
+              />
+            </a>
+            <div class="mi-s2-card-title">노트북</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/rachel_about.jpg"
+                class="mi-img"
+                onclick="saveTitle('어바웃 타임');"
+              />
+            </a>
+            <div class="mi-s2-card-title">어바웃 타임</div>
+          </div>
+        </div>
+        <div class="mv-actor" id="jeon">전도연</div>
+        <div class="mi-s2-box">
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/jeon_you.jpg"
+                class="mi-img"
+                onclick="saveTitle('너는 내 운명');"
+              />
+            </a>
+            <div class="mi-s2-card-title">너는 내 운명</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/jeon_secret.jpg"
+                class="mi-img"
+                onclick="saveTitle('밀양');"
+              />
+            </a>
+            <div class="mi-s2-card-title">밀양</div>
+          </div>
+          <div class="mi-s2-card">
+            <a href="movie_detail.html">
+              <img
+                src="../../../media/movie/jeon_house.jpg"
+                class="mi-img"
+                onclick="saveTitle('하녀');"
+              />
+            </a>
+            <div class="mi-s2-card-title">하녀</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="mi-ft-up">
+        <div class="mi-ft-text">극장소개</div>
+        <div class="mi-ft-text">02450 서울특별시 동대문구 이문로 107</div>
+        <div class="mi-ft-text">Tel: 1544-0070</div>
+      </div>
+      <div class="mi-ft-down">Copyright © 2022 BiasCinema by 박소연</div>
+    </footer>
+    <script type="text/javascript">
+      // var info = [
+      //   {
+      //     배우: "베네딕트 컴버배치",
+      //     출연작: ["스타트렉 다크니스", "이미테이션 게임", "닥터 스트레인지"],
+      //     경로: [
+      //       "../../media/movie/bene_star.jpg",
+      //       "../../media/movie/bene_immi.jpg",
+      //       "../../media/movie/bene_doctor.jpg",
+      //     ],
+      //   },
+      //   {
+      //     배우: "이병헌",
+      //     출연작: ["공동경비구역 JSA", "광해, 왕이 된 남자", "내부자들"],
+      //     경로: [
+      //       "../../media/movie/lee_jsa.jpg",
+      //       "../../media/movie/lee_wang.jpg",
+      //       "../../media/movie/lee_inside.jpg",
+      //     ],
+      //   },
+      //   {
+      //     배우: "레이첼 맥아담스",
+      //     출연작: ["퀸카로 살아남는 법", "노트북", "어바웃 타임"],
+      //     경로: [
+      //       "../../media/movie/rachel_queen.jpg",
+      //       "../../media/movie/rachel_note.jpg",
+      //       "../../media/movie/rachel_about.jpg",
+      //     ],
+      //   },
+      //   {
+      //     배우: "전도연",
+      //     출연작: ["너는 내 운명", "밀양", "하녀"],
+      //     경로: [
+      //       "../../media/movie/jeon_you.jpg",
+      //       "../../media/movie/jeon_secret.jpg",
+      //       "../../media/movie/jeon_house.jpg",
+      //     ],
+      //   },
+      // ]
+      var img = document.getElementById("mi-img")
+      function saveTitle(value) {
+        window.localStorage.setItem("선택영화", value)
+      }
+      // var container1 = document.getElementById("mv-container1")
+      // var container2 = document.getElementById("mv-container2")
+      // var actor = document.getElementById("mv-actor")
+      // var inner_container = document.getElementById("mv-inner-container")
+      // for (var i = 0; i < 4; i++) {
+      //   container1.innerHTML = ""
+      //   for (var j = 0; j < 3; j++) {
+      //     inner_container.innerHTML +=
+      //       '<div class="mi-s2-card">' +
+      //       "<img src=" +
+      //       info[i]["경로"][j] +
+      //       ' class="mi-img" />' +
+      //       '<div class="mi-s2-card-title">' +
+      //       info[i]["출연작"][j] +
+      //       "</div></div>"
+      //   }
+      //   container2.innerHTML = actor.innerHTML + inner_container.innerHTML
+      // }
+      // container1.innerHTML += container2.innerHTML
+    </script>
+  </body>
+</html>

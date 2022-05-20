@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?famvly=Do+Hyeon&famvly=Gowun+Batang:wght@400;700&display=swap");
+
+* {
+  font-family: "Gowun Batang", serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* movie.html */
+.mv-nav {
+  background-color: #eee;
+  padding: 20px 40px;
+  font-weight: bold;
+  display: flex;
+}
+.mv-nav a {
+  text-decoration: none;
+  color: black;
+}
+.mv-nav-title {
+  display: flex;
+  align-items: center;
+}
+.mv-logo-box {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.mv-logo-box img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+}
+.mv-logo-title {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 1.5em;
+}
+.mv-nav-list {
+  width: 75%;
+}
+.mv-nav-list > ul {
+  height: 100%;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mv-nav-list li {
+  text-align: center;
+  padding: 0px 40px;
+}
+.mv-login-box {
+  float: right;
+}
+.mv-login-btn {
+  font-weight: bold;
+  font-size: 16px;
+  background-color: transparent;
+  border: transparent;
+  padding: 10px 20px;
+}
+.mv-actor {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 1.4em;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* movie_detail.html */
+.dt-container {
+  min-height: calc(100vh - 300px);
+  display: flex;
+  padding: 100px;
+}
+#dt-video {
+  width: 600px;
+  padding: 30px;
+}
+.dt-text {
+  width: 600px;
+  padding: 30px;
+}
+#dt-title {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 2.5em;
+  font-weight: bolder;
+  margin-bottom: 15px;
+}
+#dt-info {
+  font-size: 1.5em;
+  color: rgb(135, 132, 132);
+  margin-bottom: 10px;
+}
+.dt-sum-title {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 1.5em;
+  color: dimgray;
+  margin-bottom: 10px;
+}
+#dt-sum {
+  color: rgb(135, 132, 132);
+  margin-bottom: 10px;
+}
+#dt-actor {
+  color: rgb(135, 132, 132);
+  margin-bottom: 10px;
+}
