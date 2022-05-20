@@ -93,6 +93,7 @@
   background-color: #be123c;
   border-radius: 6px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 .mi-s2-container {
   text-align: center;

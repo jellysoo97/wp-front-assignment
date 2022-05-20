@@ -1,10 +1,402 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>최애시네마</title>
+    <link href="../../../main.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/book.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
   </head>
-  <body></body>
+  <body onload="pageload()">
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="../../../main.html">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="bk-container">
+        <div class="bk-title"><h3>예매하기</h3></div>
+        <div class="bk-select-container">
+          <div class="bk-left-container">
+            <div class="bk-date-container" id="bk-date-container"></div>
+            <hr />
+            <div class="bk-location">
+              <img
+                src="../../../media/main/location.jpg"
+                width="30px"
+                height="30px"
+              />
+              최애시네마
+            </div>
+            <hr />
+            <div class="bk-time-container">
+              <div class="bk-movie-select" id="bk-movie-select">
+                <select id="bk-select-option" onchange="showSchedule(this)">
+                  <option selected hidden>영화 선택</option>
+                </select>
+              </div>
+              <div class="bk-movie-box" id="bk-movie-box">
+                <div class="bk-movie-title" id="bk-movie-title"></div>
+                <div class="bk-movie-n" id="bk-movie-n"></div>
+                <div class="bk-time-box" id="bk-time-box"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bk-right-container"></div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="mi-ft-up">
+        <div class="mi-ft-text">극장소개</div>
+        <div class="mi-ft-text">02450 서울특별시 동대문구 이문로 107</div>
+        <div class="mi-ft-text">Tel: 1544-0070</div>
+      </div>
+      <div class="mi-ft-down">Copyright © 2022 BiasCinema by 박소연</div>
+    </footer>
+
+    <script type="text/javascript">
+      var movie_schedule = {
+        1: {
+          날짜: "05.18 수",
+          스케쥴: {
+            "닥터스트레인지 : 대혼돈의 멀티버스": [
+              {
+                상영관: "2관",
+                시간: "10:00",
+              },
+              {
+                상영관: "2관",
+                시간: "12:00",
+              },
+              {
+                상영관: "2관",
+                시간: "14:00",
+              },
+            ],
+            "공동경비구역 JSA": [
+              {
+                상영관: "3관",
+                시간: "14:00",
+              },
+              {
+                상영관: "3관",
+                시간: "16:00",
+              },
+            ],
+            노트북: [
+              {
+                상영관: "5관",
+                시간: "16:00",
+              },
+              {
+                상영관: "3관",
+                시간: "18:00",
+              },
+            ],
+          },
+        },
+        2: {
+          날짜: "05.19 목",
+          스케쥴: {
+            범죄도시2: [
+              {
+                상영관: "1관",
+                시간: "10:00",
+              },
+              {
+                상영관: "1관",
+                시간: "12:00",
+              },
+              {
+                상영관: "1관",
+                시간: "14:00",
+              },
+            ],
+            "스타트렉 다크니스": [
+              {
+                상영관: "5관",
+                시간: "14:00",
+              },
+              {
+                상영관: "5관",
+                시간: "16:00",
+              },
+            ],
+            하녀: [
+              {
+                상영관: "2관",
+                시간: "16:00",
+              },
+              {
+                상영관: "2관",
+                시간: "18:00",
+              },
+            ],
+          },
+        },
+        3: {
+          날짜: "05.20 금",
+          스케쥴: {
+            배드가이즈: [
+              {
+                상영관: "2관",
+                시간: "10:00",
+              },
+              {
+                상영관: "2관",
+                시간: "12:00",
+              },
+              {
+                상영관: "2관",
+                시간: "14:00",
+              },
+            ],
+            "광해, 왕이 된 남자": [
+              {
+                상영관: "5관",
+                시간: "14:00",
+              },
+              {
+                상영관: "5관",
+                시간: "16:00",
+              },
+            ],
+            "어바웃 타임": [
+              {
+                상영관: "4관",
+                시간: "16:00",
+              },
+              {
+                상영관: "4관",
+                시간: "18:00",
+              },
+            ],
+          },
+        },
+        4: {
+          날짜: "05.21 토",
+          스케쥴: {
+            "신비한 동물들과 덤블도어의 비밀": [
+              {
+                상영관: "3관",
+                시간: "10:00",
+              },
+              {
+                상영관: "3관",
+                시간: "12:00",
+              },
+              {
+                상영관: "3관",
+                시간: "14:00",
+              },
+            ],
+            "이미테이션 게임": [
+              {
+                상영관: "1관",
+                시간: "14:00",
+              },
+              {
+                상영관: "1관",
+                시간: "16:00",
+              },
+            ],
+            밀양: [
+              {
+                상영관: "4관",
+                시간: "16:00",
+              },
+              {
+                상영관: "4관",
+                시간: "18:00",
+              },
+            ],
+          },
+        },
+        5: {
+          날짜: "05.22 일",
+          스케쥴: {
+            내부자들: [
+              {
+                상영관: "5관",
+                시간: "10:00",
+              },
+              {
+                상영관: "5관",
+                시간: "12:00",
+              },
+              {
+                상영관: "5관",
+                시간: "14:00",
+              },
+            ],
+            "닥터 스트레인지": [
+              {
+                상영관: "2관",
+                시간: "14:00",
+              },
+              {
+                상영관: "2관",
+                시간: "16:00",
+              },
+            ],
+            "퀸카로 살아남는 법": [
+              {
+                상영관: "1관",
+                시간: "16:00",
+              },
+              {
+                상영관: "1관",
+                시간: "18:00",
+              },
+            ],
+          },
+        },
+        6: {
+          날짜: "05.23 월",
+          스케쥴: {
+            "너는 내 운명": [
+              {
+                상영관: "1관",
+                시간: "10:00",
+              },
+              {
+                상영관: "1관",
+                시간: "12:00",
+              },
+              {
+                상영관: "1관",
+                시간: "14:00",
+              },
+            ],
+          },
+        },
+      }
+      var clicked_state = {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+      }
+      var select_option = document.getElementById("bk-select-option")
+      var movie_title = document.getElementById("bk-movie-title")
+      var movie_n = document.getElementById("bk-movie-n")
+      var time_box = document.getElementById("bk-time-box")
+
+      function pageload() {
+        window.localStorage.removeItem("날짜")
+        for (var i = 1; i < 7; i++) {
+          var date_box = "bk-date-box" + String(i)
+          var date_schedule = movie_schedule[i]["날짜"].split(" ")
+          var date_container = document.getElementById("bk-date-container")
+          date_container.innerHTML +=
+            "<div class='bk-date-box' id='bk-date-box" +
+            String(i) +
+            "'" +
+            `onclick='selectDate("${movie_schedule[i]["날짜"]}","${String(
+              i
+            )}")'` +
+            ">" +
+            date_schedule[0] +
+            "<br /><strong>" +
+            date_schedule[1] +
+            "</strong></div>"
+        }
+      }
+
+      function selectDate(value, id_num) {
+        var date_box = document.getElementById("bk-date-box" + id_num)
+        if (!clicked_state[id_num]) {
+          for (var i = 1; i < 7; i++) {
+            clicked_state[i] = false
+          }
+          clicked_state[id_num] = true
+          window.localStorage.setItem("날짜", value)
+          selectOption()
+        } else {
+          clicked_state[id_num] = false
+          window.localStorage.removeItem("날짜")
+        }
+        addClicked()
+      }
+      function addClicked() {
+        for (var i = 1; i < 7; i++) {
+          var date_box = document.getElementById("bk-date-box" + String(i))
+          if (clicked_state[i]) {
+            date_box.classList.add("clicked")
+          } else {
+            date_box.classList.remove("clicked")
+          }
+        }
+      }
+
+      function selectOption() {
+        for (var i = 1; i < 7; i++) {
+          if (
+            window.localStorage.getItem("날짜") == movie_schedule[i]["날짜"]
+          ) {
+            select_option.innerHTML =
+              "<option selected hidden>영화 선택</option>"
+            for (
+              var j = 0;
+              j < Object.keys(movie_schedule[i]["스케쥴"]).length;
+              j++
+            ) {
+              var value = Object.keys(movie_schedule[i]["스케쥴"])[j]
+              select_option.innerHTML +=
+                '<option id="bk-option' +
+                String(j + 1) +
+                '" value="' +
+                value +
+                '">' +
+                value +
+                "</option>"
+            }
+          }
+        }
+      }
+
+      function showSchedule(target) {
+        var option_text = target.options[target.selectedIndex].value
+        console.log(option_text)
+        for (var i = 1; i < 7; i++) {
+          var schedule = movie_schedule[i]["스케쥴"]
+          if (schedule[option_text]) {
+            movie_title.innerText = option_text
+            for (var j = 0; j < schedule[option_text].length; j++) {
+              movie_n.innerText = schedule[option_text][j]["상영관"]
+              time_box.innerHTML +=
+                "<div>" + schedule[option_text][j]["시간"] + "</div>"
+            }
+          }
+        }
+      }
+    </script>
+  </body>
 </html>
