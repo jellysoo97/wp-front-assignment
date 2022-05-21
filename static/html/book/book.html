@@ -436,8 +436,12 @@
       }
 
       function changeColor(target, j) {
+        var class_list = document.getElementsByClassName("bk-time-option")
         var target_class = target.classList
         var clicked_index = j
+        for (var i = 0; i < class_list.length; i++) {
+          class_list[i].classList.value = "bk-time-option"
+        }
         if (target_class.contains("time-clicked")) {
           target_class.remove("time-clicked")
         } else {

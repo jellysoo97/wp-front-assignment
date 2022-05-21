@@ -50,20 +50,20 @@
         <div class="bk-info-box">
           <div class="bk-info-small">
             <div class="bk-info-title">결제금액</div>
-            <div class="bk-info-desc">24,000원</div>
+            <div class="bk-info-desc" id="bk-info-pay"></div>
           </div>
           <div class="bk-info-small">
             <div class="bk-info-title">선택좌석</div>
-            <div class="bk-info-desc">C8</div>
+            <div class="bk-info-desc" id="bk-info-seat"></div>
           </div>
           <div class="bk-info-small">
             <a href="../../../main.html">
-              <button type="button">취소하기</button>
+              <button type="button" onclick="removeAll()">취소하기</button>
             </a>
           </div>
           <div class="bk-info-small">
             <a href="book_check.html">
-              <button type="button">티켓 구매하기</button>
+              <button type="button" onclick="saveInfo()">티켓 구매하기</button>
             </a>
           </div>
         </div>
@@ -72,6 +72,10 @@
 
     <script type="text/javascript">
       var table = document.getElementById("bk-table")
+      var pay = document.getElementById("bk-info-pay")
+      var seat = document.getElementById("bk-info-seat")
+      var seat_array = []
+      var seat_pay
 
       function pageload() {
         for (var i = 0; i < 7; i++) {
@@ -79,9 +83,36 @@
           for (var j = 0; j < 11; j++) {
             var row = document.getElementById("bk-table-row" + String(i))
             var alphabet = String.fromCharCode(65 + i)
-            row.innerHTML += "<td>" + alphabet + String(j + 1) + "</td>"
+            row.innerHTML +=
+              "<td class='bk-table-td' onclick='selectSeat(this)'>" +
+              alphabet +
+              String(j + 1) +
+              "</td>"
           }
         }
+      }
+
+      function selectSeat(target) {
+        var class_list = document.getElementsByClassName("bk-table-td")
+        var target_class = target.classList
+        if (target_class.contains("seat-clicked")) {
+          target_class.remove("seat-clicked")
+          seat_array.pop()
+        } else {
+          target_class.add("seat-clicked")
+          seat_array.push(target.innerText)
+        }
+        seat.innerText = seat_array.join(",")
+        seat_pay = 8000 * seat_array.length
+        pay.innerText = String(seat_pay) + "원"
+      }
+
+      function saveInfo() {
+        window.localStorage.setItem("좌석", seat.innerText)
+        window.localStorage.setItem("금액", pay.innerText)
+      }
+      function removeAll() {
+        window.localStorage.clear()
       }
     </script>
   </body>

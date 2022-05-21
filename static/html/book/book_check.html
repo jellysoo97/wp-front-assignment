@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="kor">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최애시네마</title>
+    <link href="../../../main.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/book.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body onload="getInfo()" class="bk-check-body">
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="../../../main.html">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="../movie/movie.html">영화</a></li>
+              <li><a href="book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="bk-check-container">
+        <div class="bk-title"><h3>예매 정보 확인</h3></div>
+        <div class="bk-select-container">
+          <div class="bk-left-container">
+            <div class="bk-info-title">영화</div>
+            <div class="bk-info-content"></div>
+            <div class="bk-info-title">날짜</div>
+            <div class="bk-info-content"></div>
+            <div class="bk-info-third">
+              <div>
+                <div class="bk-info-title">상영관</div>
+                <div class="bk-info-content"></div>
+              </div>
+              <div class="bk-info-right">
+                <div class="bk-info-title">시간</div>
+                <div class="bk-info-content"></div>
+              </div>
+            </div>
+            <div class="bk-info-title">좌석</div>
+            <div class="bk-info-content"></div>
+          </div>
+          <div class="bk-right-container">
+            <div class="bk-info-title">결제정보</div>
+            <div class="bk-pay-box">
+              <div>결제 예정 금액</div>
+              <div class="bk-info-content"></div>
+            </div>
+            <hr />
+            <div class="bk-how-box">
+              <div class="bk-info-title">결제 방식</div>
+              <div class="bk-pay-how"></div>
+            </div>
+            <hr />
+            <div class="bk-check-btn">
+              <a href="../../html/check/check.html">
+                <button
+                  type="button"
+                  class="bk-right-btn mt"
+                  onclick="saveInfo()"
+                >
+                  결제하기
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      var current_book = {
+        영화: "",
+        날짜: "",
+        상영관: "",
+        시간: "",
+        좌석: "",
+        금액: "",
+      }
+      var book_list = []
+
+      function getInfo() {
+        var movie = window.localStorage.getItem("영화")
+        var date = window.localStorage.getItem("날짜")
+        var location = window.localStorage.getItem("상영관")
+        var time = window.localStorage.getItem("시간")
+        var seat = window.localStorage.getItem("좌석")
+        var pay = window.localStorage.getItem("금액")
+
+        current_book["영화"] = movie
+        current_book["날짜"] = date
+        current_book["상영관"] = location
+        current_book["시간"] = time
+        current_book["좌석"] = seat
+        current_book["금액"] = pay
+
+        for (var i = 0; i < 6; i++) {
+          document.getElementsByClassName("bk-info-content")[i].innerText =
+            current_book[Object.keys(current_book)[i]]
+        }
+      }
+
+      function saveInfo() {
+        book_list.push(current_book)
+        window.localStorage.clear()
+        window.localStorage.setItem("book_list", JSON.stringify(book_list))
+        alert("결제가 완료되었습니다.")
+      }
+    </script>
+  </body>
+</html>
