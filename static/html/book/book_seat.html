@@ -90,7 +90,6 @@
           좌석: book_list_i["좌석"],
         }
       }
-      console.log(booked_movie_time)
 
       function pageload() {
         var movie = window.localStorage.getItem("영화")
@@ -107,15 +106,16 @@
               alphabet +
               String(j + 1) +
               "</td>"
-            if (
-              booked_movie_time[movie] != null &&
-              booked_movie_time[movie]["시간"] == time
-            ) {
-              var table_td = document.getElementById(
-                booked_movie_time[movie]["좌석"]
-              )
-              table_td.classList.add("booked")
-            }
+          }
+        }
+        if (
+          booked_movie_time[movie] != null &&
+          booked_movie_time[movie]["시간"] == time
+        ) {
+          var booked_seat_list = booked_movie_time[movie]["좌석"].split(",")
+          for (var i = 0; i < booked_seat_list.length; i++) {
+            var table_td = document.getElementById(booked_seat_list[i])
+            table_td.classList.add("booked")
           }
         }
       }
@@ -133,6 +133,7 @@
         if (target_class.contains("booked")) {
           alert("이미 선택된 좌석입니다. 다른 좌석을 선택해주세요.")
           target_class.remove("seat-clicked")
+          seat_array.pop()
         }
         seat.innerText = seat_array.join(",")
         seat_pay = 8000 * seat_array.length
@@ -144,7 +145,13 @@
         window.localStorage.setItem("금액", pay.innerText)
       }
       function removeAll() {
-        window.localStorage.clear()
+        window.localStorage.removeItem("날짜")
+        window.localStorage.removeItem("영화")
+        window.localStorage.removeItem("상영관")
+        window.localStorage.removeItem("시간")
+        alert("취소되었습니다.")
+        var changed_index = parseInt(window.localStorage.getItem("index"))
+        window.localStorage.setItem("index", changed_index)
       }
     </script>
   </body>
