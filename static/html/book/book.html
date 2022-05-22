@@ -66,13 +66,18 @@
               </div>
             </div>
           </div>
-          <div class="bk-right-container"></div>
+          <div class="bk-right-container" id="bk-right-container">
+            <div id="bk-right-img"></div>
+            <div id="bk-right-title"></div>
+            <div id="bk-right-desc"></div>
+            <a href="book_seat.html" id="bk-right-btn"> </a>
+          </div>
         </div>
       </div>
     </section>
     <footer>
       <div class="mi-ft-up">
-        <div class="mi-ft-text">극장소개</div>
+        <div class="mi-ft-text">개인정보처리방침</div>
         <div class="mi-ft-text">02450 서울특별시 동대문구 이문로 107</div>
         <div class="mi-ft-text">Tel: 1544-0070</div>
       </div>
@@ -304,13 +309,35 @@
         5: false,
         6: false,
       }
+      var img_src = {
+        "닥터스트레인지 : 대혼돈의 멀티버스": "../../../media/main/doctor.jpg",
+        범죄도시2: "../../../media/main/crime.jpg",
+        배드가이즈: "../../../media/main/bad.jpg",
+        "신비한 동물들과 덤블도어의 비밀": "../../../media/main/fantastic.jpg",
+        "스타트렉 다크니스": "../../../media/movie/bene_star.jpg",
+        "이미테이션 게임": "../../../media/movie/bene_immi.jpg",
+        "닥터 스트레인지": "../../../media/movie/bene_doctor.jpg",
+        "공동경비구역 JSA": "../../../media/movie/lee_jsa.jpg",
+        "광해, 왕이 된 남자": "../../../media/movie/lee_wang.jpg",
+        내부자들: "../../../media/movie/lee_inside.jpg",
+        "퀸카로 살아남는 법": "../../../media/movie/rachel_queen.jpg",
+        노트북: "../../../media/movie/rachel_note.jpg",
+        "어바웃 타임": "../../../media/movie/rachel_about.jpg",
+        "너는 내 운명": "../../../media/movie/jeon_you.jpg",
+        밀양: "../../../media/movie/jeon_secret.jpg",
+        하녀: "../../../media/movie/jeon_house.jpg",
+      }
       var select_option = document.getElementById("bk-select-option")
       var movie_title = document.getElementById("bk-movie-title")
       var movie_n = document.getElementById("bk-movie-n")
       var time_box = document.getElementById("bk-time-box")
+      var right_container = document.getElementById("bk-right-container")
+      var right_img = document.getElementById("bk-right-img")
+      var right_title = document.getElementById("bk-right-title")
+      var right_desc = document.getElementById("bk-right-desc")
+      var right_btn = document.getElementById("bk-right-btn")
 
       function pageload() {
-        window.localStorage.removeItem("날짜")
         for (var i = 1; i < 7; i++) {
           var date_box = "bk-date-box" + String(i)
           var date_schedule = movie_schedule[i]["날짜"].split(" ")
@@ -387,18 +414,53 @@
 
       function showSchedule(target) {
         var option_text = target.options[target.selectedIndex].value
-        console.log(option_text)
+        window.localStorage.setItem("영화", option_text)
+        time_box.innerHTML = ""
         for (var i = 1; i < 7; i++) {
           var schedule = movie_schedule[i]["스케쥴"]
           if (schedule[option_text]) {
             movie_title.innerText = option_text
             for (var j = 0; j < schedule[option_text].length; j++) {
               movie_n.innerText = schedule[option_text][j]["상영관"]
+              window.localStorage.setItem("상영관", movie_n.innerText)
               time_box.innerHTML +=
-                "<div>" + schedule[option_text][j]["시간"] + "</div>"
+                "<div class='bk-time-option' onclick='changeColor(this," +
+                String(j) +
+                ")'>" +
+                schedule[option_text][j]["시간"] +
+                "</div>"
             }
           }
         }
+      }
+
+      function changeColor(target, j) {
+        var class_list = document.getElementsByClassName("bk-time-option")
+        var target_class = target.classList
+        var clicked_index = j
+        for (var i = 0; i < class_list.length; i++) {
+          class_list[i].classList.value = "bk-time-option"
+        }
+        if (target_class.contains("time-clicked")) {
+          target_class.remove("time-clicked")
+        } else {
+          target_class.add("time-clicked")
+          window.localStorage.setItem("시간", target.innerText)
+        }
+        getInfo()
+      }
+      function getInfo() {
+        right_img.innerHTML =
+          "<img src='" + img_src[window.localStorage.getItem("영화")] + "' />"
+        right_title.innerText = window.localStorage.getItem("영화")
+        right_desc.innerText =
+          window.localStorage.getItem("날짜") +
+          "   " +
+          window.localStorage.getItem("상영관") +
+          "   " +
+          window.localStorage.getItem("시간")
+        right_btn.innerHTML =
+          '<button type="button" class="bk-right-btn">좌석 선택하기</button>'
       }
     </script>
   </body>

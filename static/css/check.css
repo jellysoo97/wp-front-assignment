@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang:wght@400;700&display=swap");
+
+* {
+  font-family: "Gowun Batang", serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* check.html */
+.ck-container {
+  min-height: calc(100vh);
+  display: flex;
+}
+.ck-left-container {
+  width: 200px;
+  background-color: #f2c46f;
+}
+.ck-right-container {
+  min-width: 500px;
+  width: 1000px;
+  padding: 50px;
+}
+.ck-title {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+.ck-desc {
+  color: #767474;
+  margin-bottom: 10px;
+}
+a {
+  color: black;
+  text-decoration-line: none;
+}
+.ck-list-inbox {
+  display: flex;
+  padding: 50px;
+}
+.ck-list-inbox:hover {
+  background-color: #0054fb31;
+}
+.ck-list-img {
+  margin-right: 30px;
+}
+.ck-list-img > img {
+  width: 200px;
+  height: 300px;
+  border-radius: 8px;
+}
+.ck-list-content {
+  margin: auto 0px;
+  line-height: 2;
+}
+
+.ck-content-title {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+.ck-content-date,
+.ck-content-loca {
+  font-size: 18px;
+}
+hr {
+  color: #767474;
+}
+
+/* check_detail.html */
+.ck-dt-body {
+  height: 100%;
+}
+.ck-dt-body > section {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0px;
+}
+.ck-dt-title {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.ck-dt-box {
+  width: 650px;
+  height: 400px;
+  text-align: left;
+}
+.ck-dt-blue {
+  height: 280px;
+  background-color: #1a2c50;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.ck-dt-movie {
+  color: #f2c46f;
+  font-weight: bolder;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  padding: 30px 50px;
+}
+.ck-dt-middle {
+  display: flex;
+}
+.ck-dt-left {
+  border-right: 2px solid white;
+  padding-left: 50px;
+  padding-right: 250px;
+}
+.ck-dt-text {
+  color: #9da8be;
+  font-size: 18px;
+}
+.ck-dt-desc {
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.ck-dt-right {
+  padding-left: 50px;
+}
+.ck-dt-yellow {
+  height: 120px;
+  background-color: #f2c46f;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.ck-dt-yellow > .ck-dt-movie {
+  color: #1a2c50;
+}
+.ck-dt-btn {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0px;
+}
+#ck-dt-cancel {
+  width: 100%;
+  border: transparent;
+  border-radius: 8px;
+  padding: 10px 100px;
+  font-weight: bold;
+  background-color: #be123c;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+#ck-dt-back {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 100px;
+  font-weight: bold;
+  background-color: white;
+  color: #be123c;
+  font-size: 16px;
+  cursor: pointer;
+}

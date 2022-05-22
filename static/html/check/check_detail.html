@@ -1,10 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>최애시네마</title>
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/check.css" type="text/css" rel="stylesheet" />
   </head>
-  <body></body>
+  <body class="ck-dt-body" onload="pageload()">
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="../movie/movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="ck-dt-container">
+        <div class="ck-dt-title">예매 내역 상세페이지</div>
+        <div class="ck-dt-box">
+          <div class="ck-dt-blue">
+            <div class="ck-dt-movie" id="ck-dt-movie"></div>
+            <div class="ck-dt-middle">
+              <div class="ck-dt-left">
+                <div class="ck-dt-text">날짜</div>
+                <div class="ck-dt-desc" id="ck-dt-date"></div>
+                <div class="ck-dt-text">시간</div>
+                <div class="ck-dt-desc" id="ck-dt-time"></div>
+              </div>
+              <div class="ck-dt-right">
+                <div class="ck-dt-text">상영관</div>
+                <div class="ck-dt-desc" id="ck-dt-loca"></div>
+                <div class="ck-dt-text">좌석</div>
+                <div class="ck-dt-desc" id="ck-dt-seat"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ck-dt-yellow">
+            <div class="ck-dt-movie">예매번호 : 0014-0072-12345</div>
+          </div>
+        </div>
+        <div class="ck-dt-btn">
+          <a href="../check/check.html">
+            <button type="button" id="ck-dt-cancel" onclick="cancelBook()">
+              예매 취소하기
+            </button>
+          </a>
+        </div>
+        <div class="ck-dt-btn">
+          <a href="../check/check.html">
+            <button type="button" id="ck-dt-back">예매 내역으로</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      var book_list = JSON.parse(window.localStorage.getItem("book_list"))
+      var index = window.localStorage.getItem("selected_index")
+      var obj_movie = document.getElementById("ck-dt-movie")
+      var obj_date = document.getElementById("ck-dt-date")
+      var obj_time = document.getElementById("ck-dt-time")
+      var obj_loca = document.getElementById("ck-dt-loca")
+      var obj_seat = document.getElementById("ck-dt-seat")
+      var book_selected = JSON.parse(
+        window.localStorage.getItem("book_selected")
+      )
+      var movie = book_selected["영화"]
+      var date = book_selected["날짜"]
+      var time = book_selected["시간"]
+      var loca = book_selected["상영관"]
+      var seat = book_selected["좌석"]
+
+      function pageload() {
+        obj_movie.innerText = movie
+        obj_date.innerText = date
+        obj_time.innerText = time
+        obj_loca.innerText = loca
+        obj_seat.innerText = seat
+      }
+
+      function cancelBook() {
+        alert("예매를 취소하시겠습니까?")
+        window.localStorage.removeItem("book_selected")
+        delete book_list[index]
+        window.localStorage.setItem("book_list", JSON.stringify(book_list))
+        window.localStorage.removeItem("selected_index")
+      }
+    </script>
+  </body>
 </html>

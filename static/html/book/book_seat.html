@@ -1,10 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>최애시네마</title>
+    <link href="../../../main.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/book.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
   </head>
-  <body></body>
+  <body onload="pageload()">
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="../../../main.html">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="bk-container">
+        <div class="bk-title"><h3>좌석 선택하기</h3></div>
+        <div class="bk-title">
+          *티켓가격은 전 좌석, 전 연령대 8,000원으로 동일합니다.
+        </div>
+        <div class="bk-seat-container">
+          <table id="bk-table"></table>
+        </div>
+        <div class="bk-text">예매 정보 확인</div>
+        <div class="bk-info-box">
+          <div class="bk-info-small">
+            <div class="bk-info-title">결제금액</div>
+            <div class="bk-info-desc" id="bk-info-pay"></div>
+          </div>
+          <div class="bk-info-small">
+            <div class="bk-info-title">선택좌석</div>
+            <div class="bk-info-desc" id="bk-info-seat"></div>
+          </div>
+          <div class="bk-info-small">
+            <a href="../../../main.html">
+              <button type="button" onclick="removeAll()">취소하기</button>
+            </a>
+          </div>
+          <div class="bk-info-small">
+            <a href="book_check.html">
+              <button type="button" onclick="saveInfo()">티켓 구매하기</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      var table = document.getElementById("bk-table")
+      var pay = document.getElementById("bk-info-pay")
+      var seat = document.getElementById("bk-info-seat")
+      var seat_array = []
+      var seat_pay
+      var movie = window.localStorage.getItem("영화")
+      var time = window.localStorage.getItem("시간")
+      var book_list = JSON.parse(window.localStorage.getItem("book_list"))
+      var book_list_keys = Object.keys(book_list)
+      var booked_movie_time = {}
+      var booked_seat
+
+      for (var i = 0; i < book_list_keys.length; i++) {
+        var book_list_i = book_list[book_list_keys[i]]
+        booked_movie_time[book_list_i["영화"]] = {
+          시간: book_list_i["시간"],
+          좌석: book_list_i["좌석"],
+        }
+      }
+      console.log(booked_movie_time)
+
+      function pageload() {
+        var movie = window.localStorage.getItem("영화")
+        for (var i = 0; i < 7; i++) {
+          table.innerHTML += "<tr id='bk-table-row" + String(i) + "'></tr>"
+          for (var j = 0; j < 11; j++) {
+            var row = document.getElementById("bk-table-row" + String(i))
+            var alphabet = String.fromCharCode(65 + i)
+            row.innerHTML +=
+              "<td class='bk-table-td' id='" +
+              alphabet +
+              String(j + 1) +
+              "' onclick='selectSeat(this)'>" +
+              alphabet +
+              String(j + 1) +
+              "</td>"
+            if (
+              booked_movie_time[movie] != null &&
+              booked_movie_time[movie]["시간"] == time
+            ) {
+              var table_td = document.getElementById(
+                booked_movie_time[movie]["좌석"]
+              )
+              table_td.classList.add("booked")
+            }
+          }
+        }
+      }
+
+      function selectSeat(target) {
+        var class_list = document.getElementsByClassName("bk-table-td")
+        var target_class = target.classList
+        if (target_class.contains("seat-clicked")) {
+          target_class.remove("seat-clicked")
+          seat_array.pop()
+        } else {
+          target_class.add("seat-clicked")
+          seat_array.push(target.innerText)
+        }
+        if (target_class.contains("booked")) {
+          alert("이미 선택된 좌석입니다. 다른 좌석을 선택해주세요.")
+          target_class.remove("seat-clicked")
+        }
+        seat.innerText = seat_array.join(",")
+        seat_pay = 8000 * seat_array.length
+        pay.innerText = String(seat_pay) + "원"
+      }
+
+      function saveInfo() {
+        window.localStorage.setItem("좌석", seat.innerText)
+        window.localStorage.setItem("금액", pay.innerText)
+      }
+      function removeAll() {
+        window.localStorage.clear()
+      }
+    </script>
+  </body>
 </html>

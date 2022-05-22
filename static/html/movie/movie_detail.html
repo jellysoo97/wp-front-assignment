@@ -24,10 +24,10 @@
           </div>
           <div class="mv-nav-list">
             <ul>
-              <li><a href="about.html">극장소개</a></li>
-              <li><a href="movie.html">영화</a></li>
-              <li><a href="book.html">예매하기</a></li>
-              <li><a href="check.html">예매내역</a></li>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="../movie/movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
             </ul>
           </div>
           <div class="mv-login-box">
@@ -51,7 +51,7 @@
     </section>
     <footer>
       <div class="mi-ft-up">
-        <div class="mi-ft-text">극장소개</div>
+        <div class="mi-ft-text">개인정보처리방침</div>
         <div class="mi-ft-text">02450 서울특별시 동대문구 이문로 107</div>
         <div class="mi-ft-text">Tel: 1544-0070</div>
       </div>
@@ -210,6 +210,7 @@
         dt_sum.innerText = sum
         dt_actor.innerText = actor
         dt_video.innerHTML = video
+        window.localStorage.removeItem("선택영화")
       }
     </script>
   </body>
