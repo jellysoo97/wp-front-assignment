@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang:wght@400;700&display=swap");
+
+* {
+  font-family: "Gowun Batang", serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* about.html */
+h3 {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 2em;
+  text-align: center;
+  padding: 30px 0px;
+}
+.ab-box {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+.ab-inbox {
+  width: 250px;
+  height: 350px;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 15px;
+}
+.ab-img {
+  text-align: center;
+  margin-bottom: 10px;
+}
+img {
+  width: 150px;
+  height: 150px;
+}
+.ab-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}

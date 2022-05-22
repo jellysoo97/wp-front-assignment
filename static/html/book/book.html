@@ -77,7 +77,7 @@
     </section>
     <footer>
       <div class="mi-ft-up">
-        <div class="mi-ft-text">극장소개</div>
+        <div class="mi-ft-text">개인정보처리방침</div>
         <div class="mi-ft-text">02450 서울특별시 동대문구 이문로 107</div>
         <div class="mi-ft-text">Tel: 1544-0070</div>
       </div>
@@ -338,7 +338,6 @@
       var right_btn = document.getElementById("bk-right-btn")
 
       function pageload() {
-        window.localStorage.removeItem("날짜")
         for (var i = 1; i < 7; i++) {
           var date_box = "bk-date-box" + String(i)
           var date_schedule = movie_schedule[i]["날짜"].split(" ")

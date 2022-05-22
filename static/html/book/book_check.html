@@ -96,7 +96,6 @@
         좌석: "",
         금액: "",
       }
-      var book_list = []
 
       function getInfo() {
         var movie = window.localStorage.getItem("영화")
@@ -120,10 +119,21 @@
       }
 
       function saveInfo() {
-        book_list.push(current_book)
+        var index = window.localStorage.getItem("index")
+        var book_list = JSON.parse(window.localStorage.getItem("book_list"))
+        console.log(index, book_list)
+        if (index == null && book_list == null) {
+          index = 1
+          book_list = {}
+          book_list[String(index)] = current_book
+        } else {
+          index = parseInt(index) + 1
+          book_list[String(index)] = current_book
+        }
         window.localStorage.clear()
-        window.localStorage.setItem("book_list", JSON.stringify(book_list))
         alert("결제가 완료되었습니다.")
+        window.localStorage.setItem("index", index)
+        window.localStorage.setItem("book_list", JSON.stringify(book_list))
       }
     </script>
   </body>

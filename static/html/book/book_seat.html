@@ -76,18 +76,46 @@
       var seat = document.getElementById("bk-info-seat")
       var seat_array = []
       var seat_pay
+      var movie = window.localStorage.getItem("영화")
+      var time = window.localStorage.getItem("시간")
+      var book_list = JSON.parse(window.localStorage.getItem("book_list"))
+      var book_list_keys = Object.keys(book_list)
+      var booked_movie_time = {}
+      var booked_seat
+
+      for (var i = 0; i < book_list_keys.length; i++) {
+        var book_list_i = book_list[book_list_keys[i]]
+        booked_movie_time[book_list_i["영화"]] = {
+          시간: book_list_i["시간"],
+          좌석: book_list_i["좌석"],
+        }
+      }
+      console.log(booked_movie_time)
 
       function pageload() {
+        var movie = window.localStorage.getItem("영화")
         for (var i = 0; i < 7; i++) {
           table.innerHTML += "<tr id='bk-table-row" + String(i) + "'></tr>"
           for (var j = 0; j < 11; j++) {
             var row = document.getElementById("bk-table-row" + String(i))
             var alphabet = String.fromCharCode(65 + i)
             row.innerHTML +=
-              "<td class='bk-table-td' onclick='selectSeat(this)'>" +
+              "<td class='bk-table-td' id='" +
+              alphabet +
+              String(j + 1) +
+              "' onclick='selectSeat(this)'>" +
               alphabet +
               String(j + 1) +
               "</td>"
+            if (
+              booked_movie_time[movie] != null &&
+              booked_movie_time[movie]["시간"] == time
+            ) {
+              var table_td = document.getElementById(
+                booked_movie_time[movie]["좌석"]
+              )
+              table_td.classList.add("booked")
+            }
           }
         }
       }
@@ -101,6 +129,10 @@
         } else {
           target_class.add("seat-clicked")
           seat_array.push(target.innerText)
+        }
+        if (target_class.contains("booked")) {
+          alert("이미 선택된 좌석입니다. 다른 좌석을 선택해주세요.")
+          target_class.remove("seat-clicked")
         }
         seat.innerText = seat_array.join(",")
         seat_pay = 8000 * seat_array.length

@@ -1,10 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>최애시네마</title>
+    <link href="../../css/movie.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/check.css" type="text/css" rel="stylesheet" />
   </head>
-  <body></body>
+  <body onload="pageload()">
+    <header>
+      <nav>
+        <div class="mv-nav">
+          <div class="mv-nav-title">
+            <div class="mv-logo-box">
+              <a href="../../../main.html">
+                <img src="../../../media/main/logo.jpg" />
+              </a>
+            </div>
+            <a href="">
+              <div class="mv-logo-title">최애시네마</div>
+            </a>
+          </div>
+          <div class="mv-nav-list">
+            <ul>
+              <li><a href="../about.html">극장소개</a></li>
+              <li><a href="../movie/movie.html">영화</a></li>
+              <li><a href="../book/book.html">예매하기</a></li>
+              <li><a href="../check/check.html">예매내역</a></li>
+            </ul>
+          </div>
+          <div class="mv-login-box">
+            <button type="button" class="mv-login-btn">로그인</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="ck-container">
+        <div class="ck-left-container"></div>
+        <div class="ck-right-container">
+          <div class="ck-title">예매 내역</div>
+          <div class="ck-desc">*예매취소는 상세페이지에서 가능합니다.</div>
+          <a href="check_detail.html">
+            <div class="ck-book-list" id="ck-book-list"></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      var img_src = {
+        "닥터스트레인지 : 대혼돈의 멀티버스": "../../../media/main/doctor.jpg",
+        범죄도시2: "../../../media/main/crime.jpg",
+        배드가이즈: "../../../media/main/bad.jpg",
+        "신비한 동물들과 덤블도어의 비밀": "../../../media/main/fantastic.jpg",
+        "스타트렉 다크니스": "../../../media/movie/bene_star.jpg",
+        "이미테이션 게임": "../../../media/movie/bene_immi.jpg",
+        "닥터 스트레인지": "../../../media/movie/bene_doctor.jpg",
+        "공동경비구역 JSA": "../../../media/movie/lee_jsa.jpg",
+        "광해, 왕이 된 남자": "../../../media/movie/lee_wang.jpg",
+        내부자들: "../../../media/movie/lee_inside.jpg",
+        "퀸카로 살아남는 법": "../../../media/movie/rachel_queen.jpg",
+        노트북: "../../../media/movie/rachel_note.jpg",
+        "어바웃 타임": "../../../media/movie/rachel_about.jpg",
+        "너는 내 운명": "../../../media/movie/jeon_you.jpg",
+        밀양: "../../../media/movie/jeon_secret.jpg",
+        하녀: "../../../media/movie/jeon_house.jpg",
+      }
+      var book_list = JSON.parse(window.localStorage.getItem("book_list"))
+      var list_box = document.getElementById("ck-book-list")
+      var index_list = Object.keys(book_list)
+
+      function pageload() {
+        for (var i = 0; i < index_list.length; i++) {
+          if (book_list[i + 1]["영화"] == null) {
+            list_box.innerHTML += ""
+          } else {
+            list_box.innerHTML +=
+              "<div class='ck-list-inbox' onclick='selectBook(" +
+              (i + 1) +
+              ")'><div class='ck-list-img'><img src='" +
+              img_src[book_list[i + 1]["영화"]] +
+              "'></div>" +
+              "<div class='ck-list-content'><div class='ck-content-title'>" +
+              book_list[i + 1]["영화"] +
+              "</div>" +
+              "<div class='ck-content-date'>" +
+              book_list[i + 1]["날짜"] +
+              "  " +
+              book_list[i + 1]["시간"] +
+              "</div>" +
+              "<div class='ck-content-loca'>" +
+              book_list[i + 1]["상영관"] +
+              "</div></div></div><hr />"
+          }
+        }
+      }
+
+      function selectBook(index) {
+        var index = String(index)
+        window.localStorage.setItem(
+          "book_selected",
+          JSON.stringify(book_list[index])
+        )
+        window.localStorage.setItem("selected_index", index)
+      }
+    </script>
+  </body>
 </html>
